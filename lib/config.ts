@@ -31,10 +31,7 @@ export const services: Service[] = [
     description: "Magnetic gel polish that creates a mesmerizing, light-shifting stripe across the nail — like the slit of a cat's eye.",
     price: "$9",
     colors: [
-      { name: "Midnight Blue", hex: "#1B1F6B" },
-      { name: "Emerald Night", hex: "#0D5E3A" },
-      { name: "Deep Plum", hex: "#4A0E4E" },
-      { name: "Black Galaxy", hex: "#1A1A2E" },
+      { name: "Pink", image: "/images/featured/cateye_pink_final.png" },
     ],
   },
   {
@@ -55,7 +52,7 @@ export const services: Service[] = [
     price: "$6",
     colors: [
       { name: "Coral Crush", hex: "#FF7675" },
-      { name: "Lavender Haze", hex: "#A29BFE" },
+      { name: "Blue Glitter", hex: "#3B5EC9" },
     ],
   },
   {
@@ -77,6 +74,7 @@ export const services: Service[] = [
       { name: "Mint Green", hex: "#3DD597" },
       { name: "Light Green", hex: "#93DC93" },
       { name: "Sea Mint", hex: "#38A12F" },
+      { name: "Shimmer", image: "/images/featured/nail_polish_skin_shiny.png" },
     ],
   },
 ];

@@ -33,10 +33,10 @@ export default function AboutPage() {
               <div className="absolute inset-0 bg-gradient-to-br from-pink/30 to-lavender/30 rounded-[2.5rem] rotate-3" />
               <div className="relative h-full rounded-[2.5rem] overflow-hidden">
                 <Image
-                  src="/images/featured/featured-01.png"
-                  alt="Nail art by Pia"
+                  src="/images/featured/about_pic.jpeg"
+                  alt="Pia — nail artist"
                   fill
-                  className="object-contain bg-white/50 p-4"
+                  className="object-cover"
                 />
               </div>
             </div>
