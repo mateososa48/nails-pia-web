@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-pink: #eb90e4;
+  --color-lavender: #ae9af7;
+  --color-cream: #FEF3EC;
+  --color-black: #000000;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-black);
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  width: max-content;
+  animation: marquee-scroll 18s linear infinite;
+}
+
+.marquee-fade {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 20%,
+    black 80%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 20%,
+    black 80%,
+    transparent
+  );
+}
+
+/* Section dividers */
+.section-divider {
+  border-top: 1px solid rgba(235, 144, 228, 0.15);
+}
+
+/* Lightbox overrides */
+.yarl__root {
+  --yarl__color_backdrop: rgba(0, 0, 0, 0.9);
+}
