@@ -29,11 +29,16 @@ export default function ServicesPage() {
 
           <AnimatedSection delay={0.2}>
             <PricingCards services={services} />
+            <div className="max-w-md mx-auto text-center bg-gradient-to-r from-pink/10 to-lavender/10 rounded-2xl p-5 -mt-8 mb-16">
+              <p className="text-sm text-black/70">
+                <span className="font-semibold">Stick-on nail stickers</span> — add up to 4 stickers for <span className="font-semibold text-pink">$1</span>
+              </p>
+            </div>
           </AnimatedSection>
 
           <AnimatedSection delay={0.3}>
             <div className="text-center mb-8">
-              <h3 className="text-2xl font-display mb-2">Color Options</h3>
+              <h3 className="text-3xl md:text-4xl font-display mb-2 bg-clip-text text-transparent bg-gradient-to-r from-[#E84393] via-pink to-lavender inline-block">Color Options</h3>
               <p className="text-black/60">Expand each service to see all available colors</p>
             </div>
             <ServiceAccordion services={services} />

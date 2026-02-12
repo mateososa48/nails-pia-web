@@ -22,6 +22,11 @@ export default function Home() {
             gradient
           />
           <ServiceAccordion services={services} />
+          <div className="max-w-md mx-auto text-center bg-gradient-to-r from-pink/10 to-lavender/10 rounded-2xl p-5 mt-8">
+            <p className="text-sm text-black/70">
+              <span className="font-semibold">Stick-on nail stickers</span> — add up to 4 stickers for <span className="font-semibold text-pink">$1</span>
+            </p>
+          </div>
           <div className="text-center mt-10">
             <Button href="/services" variant="outline">
               All Services

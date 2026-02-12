@@ -25,6 +25,11 @@ export default function PricingCards({ services }: PricingCardsProps) {
             <div className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink to-lavender">
               {service.price}
             </div>
+            {service.frenchTipPrice && (
+              <p className="text-sm text-black/50 mt-1">
+                French tip: {service.frenchTipPrice}
+              </p>
+            )}
           </div>
           <p className="text-black/60 mb-6 flex-grow">{service.description}</p>
           <div className="mb-6">
