@@ -8,7 +8,7 @@ export const siteConfig = {
 };
 
 export const contactInfo = {
-  email: "pia_sosa@icloud.com",
+  email: "nailsbypia0@gmail.com",
 };
 
 export const socialLinks = {
