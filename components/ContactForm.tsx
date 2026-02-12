@@ -4,7 +4,7 @@ import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
 import Button from "@/components/ui/Button";
 
-const WEB3FORMS_KEY = "5e19d241-6cca-4157-b680-3bf2014175d6";
+const WEB3FORMS_KEY = "524280cb-a711-42c1-a6fe-21a1862a019a";
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -84,6 +84,19 @@ export default function ContactForm() {
           required
           className="w-full px-4 py-3 rounded-xl border border-black/10 bg-white focus:outline-none focus:ring-2 focus:ring-pink/50 transition-shadow"
           placeholder="your@email.com"
+        />
+      </div>
+
+      <div>
+        <label htmlFor="date" className="block text-sm font-medium mb-2">
+          Preferred Date
+        </label>
+        <input
+          type="date"
+          id="date"
+          name="date"
+          min={new Date().toISOString().split("T")[0]}
+          className="w-full px-4 py-3 rounded-xl border border-black/10 bg-white focus:outline-none focus:ring-2 focus:ring-pink/50 transition-shadow"
         />
       </div>
 
