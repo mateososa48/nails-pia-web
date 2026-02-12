@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { HiPhone, HiEnvelope } from "react-icons/hi2";
+import { HiEnvelope } from "react-icons/hi2";
 import ContactForm from "@/components/ContactForm";
 import FAQAccordion from "@/components/FAQAccordion";
 import AnimatedSection from "@/components/ui/AnimatedSection";
@@ -39,19 +39,6 @@ export default function ContactPage() {
               <div>
                 <h3 className="text-xl font-bold mb-4">Contact Info</h3>
                 <div className="space-y-4">
-                  <a
-                    href={`tel:${contactInfo.phone}`}
-                    className="flex items-center gap-4 group"
-                  >
-                    <div className="w-12 h-12 rounded-full bg-pink/10 flex items-center justify-center group-hover:bg-pink/20 transition-colors">
-                      <HiPhone className="w-5 h-5 text-pink" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-black/50">Phone / Text</p>
-                      <p className="font-medium">{contactInfo.phone}</p>
-                    </div>
-                  </a>
-
                   <a
                     href={`mailto:${contactInfo.email}`}
                     className="flex items-center gap-4 group"

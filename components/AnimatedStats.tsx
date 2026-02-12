@@ -10,9 +10,9 @@ interface Stat {
 }
 
 const stats: Stat[] = [
-  { value: 50, suffix: "+", label: "Happy Clients" },
-  { value: 200, suffix: "+", label: "Designs Created" },
-  { value: 2, suffix: "", label: "Years Experience" },
+  { value: 10, suffix: "+", label: "Happy Clients" },
+  { value: 50, suffix: "+", label: "Designs Created" },
+  { value: 1, suffix: "", label: "Year Experience" },
 ];
 
 function AnimatedStat({ value, suffix, label }: Stat) {

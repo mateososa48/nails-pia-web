@@ -8,7 +8,6 @@ export const siteConfig = {
 };
 
 export const contactInfo = {
-  phone: "(669) 302-5191",
   email: "pia_sosa@icloud.com",
 };
 
