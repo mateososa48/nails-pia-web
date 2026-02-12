@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Service } from "@/lib/types";
 
@@ -97,9 +98,11 @@ export default function ServiceAccordion({ services }: ServiceAccordionProps) {
                                   whileHover={{ scale: 1.1 }}
                                 >
                                   {color.image ? (
-                                    <img
+                                    <Image
                                       src={color.image}
                                       alt={color.name}
+                                      width={32}
+                                      height={32}
                                       className="w-8 h-8 rounded-full border border-black/10 shadow-sm object-cover"
                                     />
                                   ) : (
