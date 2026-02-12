@@ -116,7 +116,7 @@ export default function NailPreview() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.25 }}
-          className="bg-white rounded-xl p-4 shadow-sm"
+          className="bg-gradient-to-r from-pink/20 to-lavender/20 rounded-xl p-4"
         >
           <p className="text-black/60 text-sm">
             <span

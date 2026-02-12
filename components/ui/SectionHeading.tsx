@@ -12,7 +12,7 @@ export default function SectionHeading({
   gradient = false,
 }: SectionHeadingProps) {
   const isLanding = variant === "landing";
-  const gradientClass = gradient ? " bg-clip-text text-transparent bg-gradient-to-r from-[#E84393] via-pink to-lavender" : "";
+  const gradientClass = gradient ? " bg-clip-text text-transparent bg-gradient-to-r from-[#E84393] via-pink to-lavender inline-block" : "";
 
   return (
     <div className={isLanding ? "text-center mb-6 md:mb-8" : "text-center mb-12"}>
