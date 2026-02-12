@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import HandWithNails from "./HandWithNails";
 import { services } from "@/lib/config";
@@ -89,9 +90,11 @@ export default function NailPreview() {
                       }`}
                     />
                     {color.image ? (
-                      <img
+                      <Image
                         src={color.image}
                         alt={color.name}
+                        width={32}
+                        height={32}
                         className="w-8 h-8 rounded-full shadow-md border border-black/10 object-cover transition-transform duration-150 group-hover:scale-110 group-active:scale-95"
                       />
                     ) : (

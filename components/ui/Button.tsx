@@ -7,6 +7,7 @@ interface ButtonProps {
   className?: string;
   type?: "button" | "submit";
   onClick?: () => void;
+  disabled?: boolean;
 }
 
 const variants = {
@@ -22,8 +23,9 @@ export default function Button({
   className = "",
   type = "button",
   onClick,
+  disabled = false,
 }: ButtonProps) {
-  const base = `inline-block px-6 py-3 rounded-full font-semibold text-sm transition-all duration-300 ${variants[variant]} ${className}`;
+  const base = `inline-block px-6 py-3 rounded-full font-semibold text-sm transition-all duration-300 ${variants[variant]} ${disabled ? "opacity-50 cursor-not-allowed" : ""} ${className}`;
 
   if (href) {
     return (
@@ -34,7 +36,7 @@ export default function Button({
   }
 
   return (
-    <button type={type} onClick={onClick} className={base}>
+    <button type={type} onClick={onClick} disabled={disabled} className={base}>
       {children}
     </button>
   );
