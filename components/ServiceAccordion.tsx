@@ -41,9 +41,11 @@ export default function ServiceAccordion({ services }: ServiceAccordionProps) {
                 <p className="text-sm text-black/50 mt-0.5">{service.description}</p>
               </div>
               <div className="flex items-center gap-3 shrink-0 ml-4">
-                <span className="text-xs bg-pink/10 text-pink px-2.5 py-1 rounded-full font-medium">
-                  {service.colors.length} colors
-                </span>
+                {service.colors && service.colors.length > 0 && (
+                  <span className="text-xs bg-pink/10 text-pink px-2.5 py-1 rounded-full font-medium">
+                    {service.colors.length} colors
+                  </span>
+                )}
                 <span className="font-bold text-lg">{service.price}</span>
                 <motion.svg
                   animate={{ rotate: isOpen ? 180 : 0 }}
@@ -69,31 +71,84 @@ export default function ServiceAccordion({ services }: ServiceAccordionProps) {
                   className="overflow-hidden"
                 >
                   <div className="px-2 pb-6 pt-1">
-                    <div className="grid grid-cols-5 sm:grid-cols-7 lg:grid-cols-9 gap-3">
-                      {service.colors.map((color) => (
-                        <motion.div
-                          key={color.image || color.hex}
-                          className="flex flex-col items-center gap-1.5"
-                          whileHover={{ scale: 1.1 }}
-                        >
-                          {color.image ? (
-                            <img
-                              src={color.image}
-                              alt={color.name}
-                              className="w-8 h-8 rounded-full border border-black/10 shadow-sm object-cover"
-                            />
-                          ) : (
-                            <div
-                              className="w-8 h-8 rounded-full border border-black/10 shadow-sm"
-                              style={{ backgroundColor: color.hex }}
-                            />
-                          )}
-                          <span className="text-[10px] text-black/40 leading-tight text-center">
-                            {color.name}
+                    {service.features && !service.colors?.length ? (
+                      <div className="flex flex-wrap gap-2">
+                        {service.features.map((feature) => (
+                          <span
+                            key={feature}
+                            className="text-xs bg-pink/10 text-pink px-3 py-1.5 rounded-full font-medium"
+                          >
+                            {feature}
                           </span>
-                        </motion.div>
-                      ))}
-                    </div>
+                        ))}
+                      </div>
+                    ) : service.colorGroups ? (
+                      <div className="space-y-4">
+                        {service.colorGroups.map((group) => (
+                          <div key={group.label}>
+                            <p className="text-xs font-medium text-black/50 mb-2">
+                              {group.label} <span className="text-black/30">· {group.price}</span>
+                            </p>
+                            <div className="grid grid-cols-5 sm:grid-cols-7 lg:grid-cols-9 gap-3">
+                              {group.colors.map((color) => (
+                                <motion.div
+                                  key={color.image || color.hex}
+                                  className="flex flex-col items-center gap-1.5"
+                                  whileHover={{ scale: 1.1 }}
+                                >
+                                  {color.image ? (
+                                    <img
+                                      src={color.image}
+                                      alt={color.name}
+                                      className="w-8 h-8 rounded-full border border-black/10 shadow-sm object-cover"
+                                    />
+                                  ) : (
+                                    <div
+                                      className="w-8 h-8 rounded-full border border-black/10 shadow-sm"
+                                      style={{ backgroundColor: color.hex }}
+                                    />
+                                  )}
+                                  <span className="text-[10px] text-black/40 leading-tight text-center">
+                                    {color.name}
+                                  </span>
+                                </motion.div>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    ) : service.colors?.length ? (
+                      <div className="grid grid-cols-5 sm:grid-cols-7 lg:grid-cols-9 gap-3">
+                        {service.colors.map((color) => (
+                          <motion.div
+                            key={color.image || color.hex}
+                            className="flex flex-col items-center gap-1.5"
+                            whileHover={{ scale: 1.1 }}
+                          >
+                            {color.image ? (
+                              <img
+                                src={color.image}
+                                alt={color.name}
+                                className="w-8 h-8 rounded-full border border-black/10 shadow-sm object-cover"
+                              />
+                            ) : (
+                              <div
+                                className="w-8 h-8 rounded-full border border-black/10 shadow-sm"
+                                style={{ backgroundColor: color.hex }}
+                              />
+                            )}
+                            <span className="text-[10px] text-black/40 leading-tight text-center">
+                              {color.name}
+                            </span>
+                          </motion.div>
+                        ))}
+                      </div>
+                    ) : null}
+                    {service.frenchTipPrice && (
+                      <p className="mt-4 text-sm font-medium text-black/60">
+                        French Tips available — <span className="text-pink font-bold">{service.frenchTipPrice}</span>
+                      </p>
+                    )}
                   </div>
                 </motion.div>
               )}

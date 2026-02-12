@@ -8,8 +8,8 @@ export const siteConfig = {
 };
 
 export const contactInfo = {
-  phone: "(555) 000-0000", // TODO: Replace with real phone
-  email: "hello@nailsbypia.com", // TODO: Replace with real email
+  phone: "(669) 302-5191",
+  email: "pia_sosa@icloud.com",
 };
 
 export const socialLinks = {
@@ -30,35 +30,54 @@ export const services: Service[] = [
     name: "Cat-Eye Gel Polish",
     description: "Magnetic gel polish that creates a mesmerizing, light-shifting stripe across the nail — like the slit of a cat's eye.",
     price: "$9",
+    frenchTipPrice: "$8",
     colors: [
       { name: "Pink", image: "/images/featured/cateye_pink_final.png" },
     ],
   },
   {
     name: "Gel Polish",
-    description: "Long-lasting gel polish cured under LED light for a glossy, chip-resistant finish.",
-    price: "$7",
+    description: "Long-lasting gel polish in LED-cured and no-LED options.",
+    price: "$6–$7",
+    frenchTipPrice: "$5–$6",
     colors: [
       { name: "Berry Beat", image: "/images/featured/gel_BerryBeat.png" },
       { name: "Cream Blush", image: "/images/featured/gel_creamBlush.png" },
       { name: "Indigo Grove", image: "/images/featured/gel_indigogrove.png" },
       { name: "Retro Red", image: "/images/featured/gel_retrored.png" },
       { name: "Snakebite", image: "/images/featured/gel_snakebite.png" },
-    ],
-  },
-  {
-    name: "Gel Polish (No LED)",
-    description: "Gel-like finish without the LED lamp — easy application, beautiful results.",
-    price: "$6",
-    colors: [
       { name: "Coral Crush", hex: "#FF7675" },
       { name: "Blue Glitter", hex: "#3B5EC9" },
+    ],
+    colorGroups: [
+      {
+        label: "Gel Polish",
+        price: "$7",
+        frenchTipPrice: "$6",
+        colors: [
+          { name: "Berry Beat", image: "/images/featured/gel_BerryBeat.png" },
+          { name: "Cream Blush", image: "/images/featured/gel_creamBlush.png" },
+          { name: "Indigo Grove", image: "/images/featured/gel_indigogrove.png" },
+          { name: "Retro Red", image: "/images/featured/gel_retrored.png" },
+          { name: "Snakebite", image: "/images/featured/gel_snakebite.png" },
+        ],
+      },
+      {
+        label: "No LED",
+        price: "$6",
+        frenchTipPrice: "$5",
+        colors: [
+          { name: "Coral Crush", hex: "#FF7675" },
+          { name: "Blue Glitter", hex: "#3B5EC9" },
+        ],
+      },
     ],
   },
   {
     name: "Nail Polish",
     description: "Classic nail polish in a wide range of colors — quick, simple, and always cute.",
     price: "$5",
+    frenchTipPrice: "$4",
     colors: [
       { name: "Gold Amber", hex: "#E0C438" },
       { name: "Mustard Yellow", hex: "#B8921C" },
@@ -75,6 +94,18 @@ export const services: Service[] = [
       { name: "Light Green", hex: "#93DC93" },
       { name: "Sea Mint", hex: "#38A12F" },
       { name: "Shimmer", image: "/images/featured/nail_polish_skin_shiny.png" },
+    ],
+  },
+  {
+    name: "Repair Treatment",
+    description: "Nail repair treatment to restore and maintain healthy nails — includes cuticle removal and nail care.",
+    price: "$5",
+    features: [
+      "Cuticle removal",
+      "Nail shape",
+      "Shaping",
+      "Filing",
+      "Nail care & conditioning",
     ],
   },
 ];
@@ -114,6 +145,14 @@ export const testimonials: Testimonial[] = [
     name: "Jasmine L.",
     quote: "Best nail art I've ever gotten. Pia is so talented and always makes sure you leave happy!",
   },
+  {
+    name: "Olivia K.",
+    quote: "Pia did the cutest design for my birthday! Everyone kept asking where I got my nails done.",
+  },
+  {
+    name: "Maya T.",
+    quote: "Love how gentle and careful Pia is. My nails always come out perfect and last so long!",
+  },
 ];
 
 export const faqs: FAQ[] = [
@@ -123,20 +162,14 @@ export const faqs: FAQ[] = [
   },
   {
     question: "Do you use safe products?",
-    answer: "Yes! I only use high-quality, non-toxic products that are safe for all ages.",
-  },
-  {
-    question: "Can you recreate designs from photos?",
-    answer: "Absolutely! Just send me a reference photo with your message and I'll let you know if I can make it happen.",
+    answer: "Yes! I only use high-quality, non-toxic products from Le mini macaron — a brand known for their great-quality nail polish, gel kits, and nail care equipment. Everything is safe for all ages.",
   },
   {
     question: "How long do gel nails last?",
-    answer: "Gel polish typically lasts 2-3 weeks with proper care. I'll give you tips to make them last even longer!",
+    answer: "Gel polish typically lasts 1-2 weeks with proper care. I'll give you tips to make them last even longer!",
   },
 ];
 
-export const aboutText = `Hi! I'm Pia, a middle school nail artist who loves creating fun, stylish, and creative nail designs. Nails by Pia is all about simple, cute, and trendy looks that help you express your personality.
+export const aboutText = `Hi! I'm Pia, and I'm 11 years old. I love doing nails and everything about nail art. Whether it's for a special occasion or just because, I'm here to make your nails look amazing.
 
-I offer basic manicures and custom nail designs using safe, high-quality products. Whether you want something minimal or something bold, I'll work with you to create a look you love.
-
-Perfect for friends, special occasions, or just treating yourself.`;
+I offer different treatments from basic manicures to gel polish and custom designs, all using high-quality products from Le Mini Macaron. I already have lots of experience with different nail types and techniques, and I'm always learning new ones!`;

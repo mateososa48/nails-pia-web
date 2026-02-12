@@ -28,9 +28,19 @@ export default function PricingCards({ services }: PricingCardsProps) {
           </div>
           <p className="text-black/60 mb-6 flex-grow">{service.description}</p>
           <div className="mb-6">
-            <span className="text-xs bg-pink/10 text-pink px-3 py-1.5 rounded-full font-medium">
-              {service.colors.length} colors available
-            </span>
+            {service.colors && service.colors.length > 0 ? (
+              <span className="text-xs bg-pink/10 text-pink px-3 py-1.5 rounded-full font-medium">
+                {service.colors.length} colors available
+              </span>
+            ) : service.features ? (
+              <div className="flex flex-wrap gap-1.5">
+                {service.features.map((feature) => (
+                  <span key={feature} className="text-xs bg-pink/10 text-pink px-3 py-1.5 rounded-full font-medium">
+                    {feature}
+                  </span>
+                ))}
+              </div>
+            ) : null}
           </div>
           <Button href="/contact" variant="pink" className="w-full text-center">
             Book Now

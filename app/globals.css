@@ -36,15 +36,41 @@ body {
   -webkit-mask-image: linear-gradient(
     to right,
     transparent,
-    black 20%,
-    black 80%,
+    black 30%,
+    black 70%,
     transparent
   );
   mask-image: linear-gradient(
     to right,
     transparent,
-    black 20%,
-    black 80%,
+    black 30%,
+    black 70%,
+    transparent
+  );
+}
+
+.testimonial-marquee {
+  width: max-content;
+  animation: marquee-scroll 30s linear infinite;
+}
+
+.group:hover .testimonial-marquee {
+  animation-play-state: paused;
+}
+
+.testimonial-fade {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
     transparent
   );
 }

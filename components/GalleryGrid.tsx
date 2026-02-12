@@ -27,8 +27,8 @@ export default function GalleryGrid({
   const [lightboxIndex, setLightboxIndex] = useState(-1);
 
   const colClass = {
-    2: "grid-cols-1 sm:grid-cols-2",
-    3: "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3",
+    2: "grid-cols-2 sm:grid-cols-2",
+    3: "grid-cols-2 sm:grid-cols-2 lg:grid-cols-3",
     4: "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4",
   };
 
@@ -41,7 +41,7 @@ export default function GalleryGrid({
     return (
       <>
         <LayoutGroup>
-          <div className="columns-1 sm:columns-2 lg:columns-3 gap-5">
+          <div className="columns-2 sm:columns-2 lg:columns-3 gap-3 sm:gap-5">
             <AnimatePresence mode="popLayout">
               {images.map((image) => (
                 <motion.div
@@ -51,7 +51,7 @@ export default function GalleryGrid({
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.3 }}
-                  className="relative mb-5 break-inside-avoid rounded-[2.5rem] overflow-hidden cursor-pointer group"
+                  className="relative mb-3 sm:mb-5 break-inside-avoid rounded-[1.5rem] sm:rounded-[2.5rem] overflow-hidden cursor-pointer group"
                   onClick={() => handleClick(image)}
                 >
                   <Image
@@ -96,7 +96,7 @@ export default function GalleryGrid({
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.04, ease: [0.25, 0.1, 0.25, 1] }}
             whileHover={{ scale: 1.015 }}
-            className="relative aspect-square rounded-[2.5rem] overflow-hidden cursor-pointer group"
+            className="relative aspect-square rounded-[1.5rem] sm:rounded-[2.5rem] overflow-hidden cursor-pointer group"
             onClick={() => setLightboxIndex(index)}
           >
             <Image

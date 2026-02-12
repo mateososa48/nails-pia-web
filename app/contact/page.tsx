@@ -20,6 +20,8 @@ export default function ContactPage() {
           <SectionHeading
             title="Get in Touch"
             subtitle="Ready for your new look? Send me a message!"
+            variant="landing"
+            gradient
           />
         </AnimatedSection>
 
@@ -81,6 +83,7 @@ export default function ContactPage() {
           <SectionHeading
             title="Frequently Asked Questions"
             subtitle="Got questions? I've got answers!"
+            gradient
           />
           <FAQAccordion faqs={faqs} />
         </AnimatedSection>

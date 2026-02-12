@@ -13,9 +13,9 @@ export const metadata: Metadata = {
 };
 
 const highlights = [
-  { label: "Safe Products", description: "Only high-quality, safe nail products" },
-  { label: "Creative Designs", description: "From minimal to bold — your choice" },
-  { label: "Personal Touch", description: "Every design is crafted just for you" },
+  { label: "Le Mini Macaron Products", description: "Safe, high-quality nail polish, gel kits, and tools" },
+  { label: "Multiple Treatments", description: "Basic manicures, gel polish, and custom designs" },
+  { label: "Perfect for Any Occasion", description: "Special events, hangouts, or just treating yourself" },
 ];
 
 export default function AboutPage() {
@@ -23,15 +23,15 @@ export default function AboutPage() {
     <div className="py-24 md:py-32 px-6">
       <div className="mx-auto max-w-7xl">
         <AnimatedSection>
-          <SectionHeading title="About Me" gradient />
+          <SectionHeading title="About Me" variant="landing" gradient />
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center max-w-5xl mx-auto">
-          {/* Image */}
-          <AnimatedSection>
-            <div className="relative w-full aspect-[3/4] max-w-sm mx-auto">
-              <div className="absolute inset-0 bg-gradient-to-br from-pink/30 to-lavender/30 rounded-[2.5rem] rotate-3" />
-              <div className="relative h-full rounded-[2.5rem] overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center max-w-5xl mx-auto">
+          {/* Image — shown first on desktop, second on mobile */}
+          <AnimatedSection className="order-2 lg:order-1">
+            <div className="relative w-full aspect-[3/4] max-w-[200px] sm:max-w-sm mx-auto">
+              <div className="absolute inset-0 bg-gradient-to-br from-pink/30 to-lavender/30 rounded-[2rem] sm:rounded-[2.5rem] rotate-3" />
+              <div className="relative h-full rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden">
                 <Image
                   src="/images/featured/about_pic.jpeg"
                   alt="Pia — nail artist"
@@ -42,8 +42,8 @@ export default function AboutPage() {
             </div>
           </AnimatedSection>
 
-          {/* Text */}
-          <AnimatedSection delay={0.2}>
+          {/* Text — shown first on mobile */}
+          <AnimatedSection delay={0.2} className="order-1 lg:order-2">
             <div className="space-y-6">
               {aboutText.split("\n\n").map((paragraph, i) => (
                 <p key={i} className="text-lg text-black/70 leading-relaxed">
@@ -71,7 +71,7 @@ export default function AboutPage() {
         </div>
 
         {/* Animated Stats */}
-        <AnimatedSection className="mt-20 pt-16 border-t border-pink/[0.12]">
+        <AnimatedSection className="mt-20 pt-16">
           <AnimatedStats />
         </AnimatedSection>
       </div>

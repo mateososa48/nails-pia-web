@@ -4,13 +4,38 @@ import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
 import Button from "@/components/ui/Button";
 
+const WEB3FORMS_KEY = "5e19d241-6cca-4157-b680-3bf2014175d6";
+
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // TODO: Hook up to a form service (e.g., Formspree, EmailJS)
-    setSubmitted(true);
+    setLoading(true);
+    setError(false);
+
+    const formData = new FormData(e.currentTarget);
+    formData.append("access_key", WEB3FORMS_KEY);
+    formData.append("subject", "New message from Nails by Pia");
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        setError(true);
+      }
+    } catch {
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
   }
 
   if (submitted) {
@@ -31,6 +56,9 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      {/* Honeypot spam protection */}
+      <input type="checkbox" name="botcheck" className="hidden" />
+
       <div>
         <label htmlFor="name" className="block text-sm font-medium mb-2">
           Name
@@ -73,8 +101,14 @@ export default function ContactForm() {
         />
       </div>
 
-      <Button type="submit" className="w-full text-center">
-        Send Message
+      {error && (
+        <p className="text-red-500 text-sm">
+          Something went wrong. Please try again!
+        </p>
+      )}
+
+      <Button type="submit" className="w-full text-center" disabled={loading}>
+        {loading ? "Sending..." : "Send Message"}
       </Button>
     </form>
   );

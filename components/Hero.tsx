@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Button from "@/components/ui/Button";
-import FloatingDecoration from "@/components/ui/FloatingDecoration";
 import { siteConfig } from "@/lib/config";
 
 export default function Hero() {
@@ -18,10 +17,6 @@ export default function Hero() {
         style={{ y: bgY }}
       />
 
-      {/* Floating decorations */}
-      <FloatingDecoration color="pink" size={32} className="top-[15%] left-[8%]" delay={0} />
-      <FloatingDecoration color="lavender" size={20} className="top-[30%] right-[12%]" delay={1.5} />
-      <FloatingDecoration color="pink" size={16} className="bottom-[20%] left-[15%]" delay={0.8} />
 
       <div className="relative mx-auto max-w-7xl px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-20">
         {/* Text */}
@@ -55,7 +50,7 @@ export default function Hero() {
           transition={{ duration: 1.0, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
           className="relative flex justify-center"
         >
-          <div className="relative w-[240px] h-[320px] md:w-[320px] md:h-[440px] lg:w-[360px] lg:h-[480px]">
+          <div className="relative w-[200px] h-[320px] md:w-[260px] md:h-[440px] lg:w-[300px] lg:h-[480px] xl:w-[340px] xl:h-[520px] 2xl:w-[380px] 2xl:h-[560px]">
             <div className="absolute inset-0 bg-gradient-to-br from-pink/30 to-lavender/30 rounded-[2.5rem] blur-2xl scale-110" />
             <div className="relative z-10 h-full rounded-[2.25rem] overflow-hidden marquee-fade">
               <div className="marquee-track flex items-center gap-0 h-full px-0.5">
@@ -66,7 +61,7 @@ export default function Hero() {
                   "/images/featured/yes4.png",
                   "/images/featured/yes5.png",
                 ].map((src) => (
-                  <div key={src} className="relative w-60 h-60 md:w-72 md:h-72 shrink-0">
+                  <div key={src} className="relative w-48 h-48 md:w-56 md:h-56 shrink-0">
                     <Image
                       src={src}
                       alt="Nail art by Pia"
@@ -82,7 +77,7 @@ export default function Hero() {
                   "/images/featured/yes4.png",
                   "/images/featured/yes5.png",
                 ].map((src) => (
-                  <div key={`${src}-dup`} className="relative w-60 h-60 md:w-72 md:h-72 shrink-0">
+                  <div key={`${src}-dup`} className="relative w-48 h-48 md:w-56 md:h-56 shrink-0">
                     <Image
                       src={src}
                       alt="Nail art by Pia"

@@ -6,20 +6,22 @@ import HandWithNails from "./HandWithNails";
 import { services } from "@/lib/config";
 import { ServiceColor } from "@/lib/types";
 
+const colorServices = services.filter((s) => s.colors && s.colors.length > 0);
+
 export default function NailPreview() {
   const [activeTab, setActiveTab] = useState(0);
-  const activeService = services[activeTab];
+  const activeService = colorServices[activeTab];
   const [selectedColor, setSelectedColor] = useState<ServiceColor>(
-    activeService.colors[0]
+    activeService.colors![0]
   );
 
   const handleTabChange = (index: number) => {
     setActiveTab(index);
-    setSelectedColor(services[index].colors[0]);
+    setSelectedColor(colorServices[index].colors![0]);
   };
 
   return (
-    <div className="flex flex-col md:flex-row items-stretch md:min-h-[400px]">
+    <div className="flex flex-col md:flex-row items-stretch md:min-h-[400px] md:max-h-[800px]">
       {/* Hand */}
       <div className="relative w-full md:w-1/2 shrink-0 bg-cream min-h-[300px] md:min-h-0">
         <HandWithNails color={selectedColor.hex} image={selectedColor.image} />
@@ -31,7 +33,7 @@ export default function NailPreview() {
         <div>
           <h3 className="text-2xl lg:text-3xl mb-3 font-display bg-clip-text text-transparent bg-gradient-to-r from-[#E84393] via-pink to-lavender inline-block">Treatment</h3>
           <div className="flex flex-wrap gap-2">
-            {services.map((service, index) => (
+            {colorServices.map((service, index) => (
               <button
                 key={service.name}
                 onClick={() => handleTabChange(index)}
@@ -66,7 +68,7 @@ export default function NailPreview() {
             role="radiogroup"
             aria-label="Nail color"
           >
-            {activeService.colors.map((color) => {
+            {activeService.colors!.map((color) => {
               const isSelected = selectedColor.name === color.name;
               return (
                 <button
@@ -123,7 +125,12 @@ export default function NailPreview() {
             >
               {selectedColor.name}
             </span>{" "}
-            — {activeService.name} · {activeService.price}
+            — {activeService.name} ·{" "}
+            {activeService.colorGroups
+              ? (activeService.colorGroups.find((g) =>
+                  g.colors.some((c) => c.name === selectedColor.name)
+                )?.price ?? activeService.price)
+              : activeService.price}
           </p>
         </motion.div>
       </div>

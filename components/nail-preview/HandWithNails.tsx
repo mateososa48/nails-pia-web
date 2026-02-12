@@ -24,7 +24,7 @@ export default function HandWithNails({ color, image }: HandWithNailsProps) {
           src="/images/featured/hand-stock.webp"
           alt="Hand preview"
           fill
-          className="object-contain"
+          className="object-contain object-left"
           priority
         />
 
@@ -32,6 +32,7 @@ export default function HandWithNails({ color, image }: HandWithNailsProps) {
         <svg
           viewBox="0 0 800 1037"
           className="absolute inset-0 w-full h-full"
+          preserveAspectRatio="xMinYMid meet"
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>

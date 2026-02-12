@@ -4,11 +4,21 @@ export interface ServiceColor {
   image?: string;
 }
 
+export interface ColorGroup {
+  label: string;
+  price: string;
+  frenchTipPrice?: string;
+  colors: ServiceColor[];
+}
+
 export interface Service {
   name: string;
   description: string;
   price: string;
-  colors: ServiceColor[];
+  frenchTipPrice?: string;
+  colors?: ServiceColor[];
+  colorGroups?: ColorGroup[];
+  features?: string[];
 }
 
 export interface GalleryImage {
