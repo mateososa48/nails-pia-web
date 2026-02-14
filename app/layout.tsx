@@ -5,6 +5,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import PageTransition from "@/components/layout/PageTransition";
 import { siteConfig } from "@/lib/config";
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -39,6 +40,7 @@ export default function RootLayout({
           <PageTransition>{children}</PageTransition>
         </main>
         <Footer />
+        <Analytics />
         <span className="fixed bottom-2 right-3 text-[10px] text-black/20 z-50 pointer-events-none">Created by Mateo S.</span>
       </body>
     </html>
