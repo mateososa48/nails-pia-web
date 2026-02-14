@@ -437,8 +437,26 @@ export default function NailPreview() {
                   }`}
                 >
                   <div className="w-11 h-11 rounded-xl bg-black/[0.04] hover:bg-black/[0.08] active:scale-90 flex items-center justify-center transition-all">
-                    <svg viewBox="0 0 24 24" className="w-6 h-6" fill={iconColor}>
-                      <path d={sticker.iconPath} />
+                    <svg viewBox="0 0 24 24" className="w-6 h-6">
+                      <defs>
+                        <linearGradient id={`tray-silver-${sticker.id}`} x1="0" y1="0" x2="1" y2="1">
+                          <stop offset="0%" stopColor="#F0F0F0" />
+                          <stop offset="20%" stopColor="#D8D8D8" />
+                          <stop offset="45%" stopColor="#A8A8A8" />
+                          <stop offset="60%" stopColor="#C8C8C8" />
+                          <stop offset="80%" stopColor="#E8E8E8" />
+                          <stop offset="100%" stopColor="#B0B0B0" />
+                        </linearGradient>
+                        <linearGradient id={`tray-gold-${sticker.id}`} x1="0" y1="0" x2="1" y2="1">
+                          <stop offset="0%" stopColor="#FFF1A8" />
+                          <stop offset="20%" stopColor="#FFD700" />
+                          <stop offset="45%" stopColor="#B8860B" />
+                          <stop offset="60%" stopColor="#DAA520" />
+                          <stop offset="80%" stopColor="#FFE066" />
+                          <stop offset="100%" stopColor="#C5941A" />
+                        </linearGradient>
+                      </defs>
+                      <path d={sticker.iconPath} fill={iconColor.replace('metallic-silver', `tray-silver-${sticker.id}`).replace('metallic-gold', `tray-gold-${sticker.id}`)} />
                     </svg>
                   </div>
                   <span className="text-[10px] text-black/40 leading-tight">
@@ -508,11 +526,28 @@ export default function NailPreview() {
             >
               <motion.svg
                 viewBox="0 0 24 24"
-                fill={def.elements[0].fill}
                 animate={{ width: overNail ? 28 : 20, height: overNail ? 28 : 20 }}
                 transition={{ type: "spring", stiffness: 300, damping: 25 }}
               >
-                <path d={def.iconPath} />
+                <defs>
+                  <linearGradient id="ghost-silver" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="#F0F0F0" />
+                    <stop offset="20%" stopColor="#D8D8D8" />
+                    <stop offset="45%" stopColor="#A8A8A8" />
+                    <stop offset="60%" stopColor="#C8C8C8" />
+                    <stop offset="80%" stopColor="#E8E8E8" />
+                    <stop offset="100%" stopColor="#B0B0B0" />
+                  </linearGradient>
+                  <linearGradient id="ghost-gold" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="#FFF1A8" />
+                    <stop offset="20%" stopColor="#FFD700" />
+                    <stop offset="45%" stopColor="#B8860B" />
+                    <stop offset="60%" stopColor="#DAA520" />
+                    <stop offset="80%" stopColor="#FFE066" />
+                    <stop offset="100%" stopColor="#C5941A" />
+                  </linearGradient>
+                </defs>
+                <path d={def.iconPath} fill={def.elements[0].fill.replace('metallic-silver', 'ghost-silver').replace('metallic-gold', 'ghost-gold')} />
               </motion.svg>
             </motion.div>
           </motion.div>

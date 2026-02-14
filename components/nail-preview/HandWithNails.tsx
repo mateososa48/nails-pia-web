@@ -78,6 +78,23 @@ export default function HandWithNails({
               <stop offset="0%" stopColor="white" stopOpacity="0.35" />
               <stop offset="60%" stopColor="white" stopOpacity="0" />
             </radialGradient>
+            {/* Metallic sticker gradients */}
+            <linearGradient id="metallic-silver" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="#F0F0F0" />
+              <stop offset="20%" stopColor="#D8D8D8" />
+              <stop offset="45%" stopColor="#A8A8A8" />
+              <stop offset="60%" stopColor="#C8C8C8" />
+              <stop offset="80%" stopColor="#E8E8E8" />
+              <stop offset="100%" stopColor="#B0B0B0" />
+            </linearGradient>
+            <linearGradient id="metallic-gold" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="#FFF1A8" />
+              <stop offset="20%" stopColor="#FFD700" />
+              <stop offset="45%" stopColor="#B8860B" />
+              <stop offset="60%" stopColor="#DAA520" />
+              <stop offset="80%" stopColor="#FFE066" />
+              <stop offset="100%" stopColor="#C5941A" />
+            </linearGradient>
             {image && (
               <pattern id="nail-image" patternUnits="objectBoundingBox" patternContentUnits="objectBoundingBox" width="1" height="1">
                 <image href={image} width="1" height="1" preserveAspectRatio="xMidYMid slice" />

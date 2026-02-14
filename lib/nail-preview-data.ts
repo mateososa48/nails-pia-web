@@ -107,8 +107,8 @@ export interface PlacedSticker {
   localY: number;
 }
 
-const SILVER = "#C0C0C0";
-const GOLD = "#FFD700";
+const SILVER = "url(#metallic-silver)";
+const GOLD = "url(#metallic-gold)";
 
 export const nailStickers: NailSticker[] = [
   {
