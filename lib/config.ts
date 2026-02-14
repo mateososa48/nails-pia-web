@@ -117,6 +117,8 @@ export const galleryCategories = [
 ];
 
 export const galleryImages: GalleryImage[] = [
+  { src: "/images/gallery/35558348-FA99-484A-A9CD-1EB2A301FE8D.jpeg", alt: "Nail design", category: "polish" },
+  { src: "/images/gallery/IMG_0662.jpeg", alt: "Nail design", category: "gel" },
   { src: "/images/gallery/nails-01.jpeg", alt: "Nail design", category: "gel" },
   { src: "/images/gallery/nails-02.jpeg", alt: "Nail design", category: "custom" },
   { src: "/images/gallery/nails-03.jpeg", alt: "Nail design", category: "polish" },
