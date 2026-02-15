@@ -137,24 +137,31 @@ export const testimonials: Testimonial[] = [
   {
     name: "Sarah M.",
     quote: "Pia's nail designs are always so cute and creative! She really listens to what you want and makes it happen.",
+    rating: 5,
   },
   {
     name: "Emily R.",
     quote: "Super fun experience and my nails look amazing every single time. Definitely my go-to nail artist!",
+    rating: 5,
   },
   {
     name: "Jasmine L.",
     quote: "Best nail art I've ever gotten. Pia is so talented and always makes sure you leave happy!",
+    rating: 5,
   },
   {
     name: "Olivia K.",
     quote: "Pia did the cutest design for my birthday! Everyone kept asking where I got my nails done.",
+    rating: 4.5,
   },
   {
     name: "Maya T.",
     quote: "Love how gentle and careful Pia is. My nails always come out perfect and last so long!",
+    rating: 5,
   },
 ];
+
+export const reviewSheetUrl = "https://script.google.com/macros/s/AKfycbxCqM0hBarfAWuH9Bzf5nwVPMezXq0XRfhpVKiidX6kgF6Vfx40ir-7ve8WMPtnsMDd/exec";
 
 export const faqs: FAQ[] = [
   {

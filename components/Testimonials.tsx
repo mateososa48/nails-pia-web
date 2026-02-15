@@ -1,6 +1,7 @@
 "use client";
 
 import { Testimonial } from "@/lib/types";
+import StarRating from "@/components/ui/StarRating";
 
 interface TestimonialsProps {
   testimonials: Testimonial[];
@@ -10,6 +11,11 @@ function TestimonialCard({ t }: { t: Testimonial }) {
   return (
     <div className="w-[300px] shrink-0">
       <div className="rounded-[2rem] p-6 h-full flex flex-col bg-gradient-to-r from-pink/20 to-lavender/20">
+        {/* Star Rating */}
+        <div className="mb-3">
+          <StarRating value={t.rating ?? 5} size="sm" />
+        </div>
+
         {/* Quote */}
         <p className="text-black/80 leading-relaxed flex-grow text-[15px]">
           &ldquo;{t.quote}&rdquo;

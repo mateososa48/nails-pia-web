@@ -1,11 +1,11 @@
 import Hero from "@/components/Hero";
 import ServiceAccordion from "@/components/ServiceAccordion";
 import NailPreview from "@/components/nail-preview/NailPreview";
-import Testimonials from "@/components/Testimonials";
+import TestimonialsSection from "@/components/TestimonialsSection";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
-import { services, testimonials } from "@/lib/config";
+import { services } from "@/lib/config";
 
 export default function Home() {
   return (
@@ -49,7 +49,7 @@ export default function Home() {
       </AnimatedSection>
 
 
-      {/* Testimonials */}
+      {/* Testimonials + Review Form */}
       <AnimatedSection className="py-24 md:py-32 px-6">
         <div className="mx-auto max-w-7xl">
           <SectionHeading
@@ -57,7 +57,7 @@ export default function Home() {
             subtitle="Hear from happy clients"
             gradient
           />
-          <Testimonials testimonials={testimonials} />
+          <TestimonialsSection />
         </div>
       </AnimatedSection>
 

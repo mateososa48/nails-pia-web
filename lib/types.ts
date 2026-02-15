@@ -35,6 +35,7 @@ export interface NavLink {
 export interface Testimonial {
   name: string;
   quote: string;
+  rating?: number;
 }
 
 export interface FAQ {
