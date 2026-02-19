@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import Button from "@/components/ui/Button";
 
 const WEB3FORMS_KEY = "524280cb-a711-42c1-a6fe-21a1862a019a";
-const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbxFTH53O0i_c92Xff_wDKZjSZsOjkMGUfVM0ZHb7bIjq3mNLDS-loE5p5jnmBXNAQCJ7g/exec";
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -28,16 +27,16 @@ export default function ContactForm() {
       });
 
       if (res.ok) {
-        // Also send to Google Sheet (fire and forget)
-        fetch(GOOGLE_SHEET_URL, {
+        // Also send to Google Sheet via server-side proxy (avoids CORS/no-cors issues)
+        fetch("/api/contact", {
           method: "POST",
-          mode: "no-cors",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             name: formData.get("name"),
             email: formData.get("email"),
             date: formData.get("date") || "Not specified",
             message: formData.get("message"),
+            timestamp: new Date().toISOString(),
           }),
         }).catch(() => {});
         setSubmitted(true);
