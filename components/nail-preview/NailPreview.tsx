@@ -90,6 +90,9 @@ export default function NailPreview() {
   const [ghostPos, setGhostPos] = useState({ x: 0, y: 0 });
   const [hoverNailId, setHoverNailId] = useState<string | null>(null);
   const svgRef = useRef<SVGSVGElement>(null);
+  const autoScrollFrameRef = useRef<number | null>(null);
+  const autoScrollVelocityRef = useRef(0);
+  const dragPointerRef = useRef<{ x: number; y: number } | null>(null);
 
   const handleTabChange = (index: number) => {
     setActiveTab(index);
@@ -109,6 +112,62 @@ export default function NailPreview() {
     }
     return null;
   }, []);
+
+  const stopAutoScroll = useCallback((clearPointer = false) => {
+    autoScrollVelocityRef.current = 0;
+    if (autoScrollFrameRef.current !== null) {
+      window.cancelAnimationFrame(autoScrollFrameRef.current);
+      autoScrollFrameRef.current = null;
+    }
+    if (clearPointer) {
+      dragPointerRef.current = null;
+    }
+  }, []);
+
+  const syncAutoScroll = useCallback(
+    (clientX: number, clientY: number) => {
+      dragPointerRef.current = { x: clientX, y: clientY };
+
+      if (window.innerWidth >= 768) {
+        stopAutoScroll();
+        return;
+      }
+
+      const edgeZone = Math.min(180, window.innerHeight * 0.28);
+      if (clientY > edgeZone || window.scrollY <= 0) {
+        stopAutoScroll();
+        return;
+      }
+
+      const intensity = 1 - clientY / edgeZone;
+      autoScrollVelocityRef.current = -(50 + intensity * 50);
+
+      if (autoScrollFrameRef.current !== null) return;
+
+      const tick = () => {
+        const pointer = dragPointerRef.current;
+        if (!pointer || autoScrollVelocityRef.current === 0 || window.scrollY <= 0) {
+          stopAutoScroll();
+          return;
+        }
+
+        window.scrollBy({
+          top: autoScrollVelocityRef.current,
+          behavior: "auto",
+        });
+
+        const svg = svgRef.current;
+        if (svg) {
+          setHoverNailId(hitTestNails(svg, pointer.x, pointer.y));
+        }
+
+        autoScrollFrameRef.current = window.requestAnimationFrame(tick);
+      };
+
+      autoScrollFrameRef.current = window.requestAnimationFrame(tick);
+    },
+    [stopAutoScroll]
+  );
 
   const handleDrop = useCallback(
     (clientX: number, clientY: number, stickerType: StickerType) => {
@@ -145,6 +204,7 @@ export default function NailPreview() {
 
     const onMove = (e: PointerEvent) => {
       setGhostPos({ x: e.clientX, y: e.clientY });
+      syncAutoScroll(e.clientX, e.clientY);
 
       // Detect which nail we're hovering over
       const svg = svgRef.current;
@@ -154,12 +214,14 @@ export default function NailPreview() {
     };
 
     const onUp = (e: PointerEvent) => {
+      stopAutoScroll(true);
       handleDrop(e.clientX, e.clientY, dragging);
       setDragging(null);
       setHoverNailId(null);
     };
 
     const onCancel = () => {
+      stopAutoScroll(true);
       setDragging(null);
       setHoverNailId(null);
     };
@@ -173,7 +235,7 @@ export default function NailPreview() {
       document.removeEventListener("pointerup", onUp);
       document.removeEventListener("pointercancel", onCancel);
     };
-  }, [dragging, handleDrop]);
+  }, [dragging, handleDrop, stopAutoScroll, syncAutoScroll]);
 
   useEffect(() => {
     if (!selectedStickerId) return;
@@ -189,6 +251,7 @@ export default function NailPreview() {
     if (!draggingStickerId) return;
 
     const onMove = (e: PointerEvent) => {
+      syncAutoScroll(e.clientX, e.clientY);
       const hit = getNailHit(e.clientX, e.clientY);
       setHoverNailId(hit ? hit.nail.id : null);
       if (!hit) return;
@@ -213,11 +276,13 @@ export default function NailPreview() {
     };
 
     const onUp = () => {
+      stopAutoScroll(true);
       setDraggingStickerId(null);
       setHoverNailId(null);
     };
 
     const onCancel = () => {
+      stopAutoScroll(true);
       setDraggingStickerId(null);
       setHoverNailId(null);
     };
@@ -231,7 +296,9 @@ export default function NailPreview() {
       document.removeEventListener("pointerup", onUp);
       document.removeEventListener("pointercancel", onCancel);
     };
-  }, [draggingStickerId, getNailHit]);
+  }, [draggingStickerId, getNailHit, stopAutoScroll, syncAutoScroll]);
+
+  useEffect(() => () => stopAutoScroll(true), [stopAutoScroll]);
 
   // Pending drag: pointerdown on tray sticker records position.
   // pointermove > threshold → real drag. pointerup without moving → tap-to-select.
